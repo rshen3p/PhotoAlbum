@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CameraApp</string>
+    <string name="title_activity_filter_date">FilterDateActivity</string>
+    <string name="title_activity_filter_location">FilterLocationActivity</string>
+    <string name="title_activity_filter_text">FilterTextActivity</string>
+    <string name="title_activity_result">ResultActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_tagging">TaggingActivity</string>
+
+
+</resources>
