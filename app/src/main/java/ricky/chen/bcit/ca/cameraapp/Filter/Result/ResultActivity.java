@@ -65,7 +65,7 @@ public class ResultActivity extends AppCompatActivity {
             result = (ImageView)findViewById(R.id.resultView);
             result.setImageBitmap(image);
         } else {
-            Toast.makeText(this,"No more pictures ",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"No more pictures anymore",Toast.LENGTH_SHORT).show();
         }
     }
 
