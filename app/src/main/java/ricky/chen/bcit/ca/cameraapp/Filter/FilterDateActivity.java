@@ -29,7 +29,7 @@ public class FilterDateActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        files = (ArrayList<File>)getIntent().getSerializableExtra("DATA");
+        files = (ArrayList<File>) getIntent().getSerializableExtra("DATA");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -40,55 +40,55 @@ public class FilterDateActivity extends AppCompatActivity {
         });
     }
 
-    public void greater(View v){
-        EditText date = (EditText)findViewById(R.id.date);
+    public void greater(View v) {
+        EditText date = (EditText) findViewById(R.id.date);
         results = new ArrayList<File>();
-        if(files != null && date != null) {
+        if (files != null && date != null) {
 
             int dateValue = Integer.parseInt(date.getText().toString());
 
-            for(int i=0; i<files.size(); i++){
+            for (int i = 0; i < files.size(); i++) {
                 searchterm = files.get(i).getName();
-                filename = searchterm.substring(6,14);
+                filename = searchterm.substring(6, 14);
                 photoDateValue = Integer.parseInt(filename);
-                if(files.get(i) != null && photoDateValue > dateValue) {
+                if (files.get(i) != null && photoDateValue > dateValue) {
                     results.add(files.get(i));
                 }
             }
 
-            Intent in = new Intent(this,ResultActivity.class);
-            in.putExtra("pictures",results);
+            Intent in = new Intent(this, ResultActivity.class);
+            in.putExtra("pictures", results);
             startActivity(in);
         } else {
-            Toast.makeText(this,"Please enter search term",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter search term", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void less(View v){
-        EditText date = (EditText)findViewById(R.id.date);
+    public void less(View v) {
+        EditText date = (EditText) findViewById(R.id.date);
         results = new ArrayList<File>();
-        if(files != null && date != null) {
+        if (files != null && date != null) {
 
             int dateValue = Integer.parseInt(date.getText().toString());
 
-            for(int i=0; i<files.size(); i++){
-                filename = files.get(i).getName().substring(6,14);
+            for (int i = 0; i < files.size(); i++) {
+                filename = files.get(i).getName().substring(6, 14);
 
                 photoDateValue = Integer.parseInt(filename);
-                if(photoDateValue < dateValue) {
+                if (photoDateValue < dateValue) {
                     results.add(files.get(i));
                 }
             }
 
-            Intent in = new Intent(this,ResultActivity.class);
-            in.putExtra("pictures",results);
+            Intent in = new Intent(this, ResultActivity.class);
+            in.putExtra("pictures", results);
             startActivity(in);
         } else {
-            Toast.makeText(this,"Please enter search term",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter search term", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void home(View v){
+    public void home(View v) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

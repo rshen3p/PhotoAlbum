@@ -19,23 +19,23 @@ public class FilterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
 
-        files = (ArrayList<File>)getIntent().getSerializableExtra("DATA");
+        files = (ArrayList<File>) getIntent().getSerializableExtra("DATA");
     }
 
-    public void filterDate(View v){
-        Intent filterDate = new Intent(this,FilterDateActivity.class);
+    public void filterDate(View v) {
+        Intent filterDate = new Intent(this, FilterDateActivity.class);
         filterDate.putExtra("DATA", files);
         startActivity(filterDate);
     }
 
-    public void filterLocation(View v){
-        Intent filterLocation = new Intent(this,FilterLocationActivity.class);
+    public void filterLocation(View v) {
+        Intent filterLocation = new Intent(this, FilterLocationActivity.class);
         filterLocation.putExtra("DATA", files);
         startActivity(filterLocation);
     }
 
-    public void filterText(View v){
-        Intent filterText = new Intent(this,FilterTextActivity.class);
+    public void filterText(View v) {
+        Intent filterText = new Intent(this, FilterTextActivity.class);
         filterText.putExtra("DATA", files);
         startActivity(filterText);
     }

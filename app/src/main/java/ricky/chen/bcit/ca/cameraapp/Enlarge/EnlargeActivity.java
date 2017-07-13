@@ -18,7 +18,7 @@ public class EnlargeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enlarge);
 
-        picture = (ImageView)findViewById(R.id.picture);
+        picture = (ImageView) findViewById(R.id.picture);
         Intent intent = getIntent();
 
         byte[] bytes = intent.getByteArrayExtra("EXTRA_IMG");

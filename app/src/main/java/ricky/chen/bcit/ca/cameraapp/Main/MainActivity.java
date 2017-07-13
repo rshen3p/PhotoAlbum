@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Bitmap> list = new ArrayList<Bitmap>();
     private ArrayList<File> files = new ArrayList<File>();
     private int index = 0;
-    public double lat,lon;
+    public double lat, lon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +44,15 @@ public class MainActivity extends AppCompatActivity {
         File file = new File("/storage/sdcard/Pictures/");
         File fa[] = file.listFiles();
         int count = 0;
-        for(File f : fa){
+        for (File f : fa) {
             String name = f.getName();
-            if (name.endsWith(".jpg")){
+            if (name.endsWith(".jpg")) {
                 count++;
                 files.add(f);
             }
         }
 
-        for(int i=0; i<files.size();i++){
+        for (int i = 0; i < files.size(); i++) {
             Bitmap pic = BitmapFactory.decodeFile(files.get(i).getAbsolutePath());
             list.add(pic);
         }
@@ -106,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    File createImageFile() throws IOException,SecurityException {
-        LocationManager locationManager=    (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+    File createImageFile() throws IOException, SecurityException {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         MyCurrentLoctionListener locationListener = new MyCurrentLoctionListener();
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) locationListener);
 
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         String imageFileName = "IMAGE_" + timeStamp + "_" + lat + "_" + lon;
         File storageDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 
-        File image = File.createTempFile(imageFileName,".jpg", storageDirectory);
+        File image = File.createTempFile(imageFileName, ".jpg", storageDirectory);
         mImageLocation = image.getAbsolutePath();
 
         files.add(image);
@@ -152,8 +152,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //use android jpeg header api
-    public void enlarge(View v){
-        Intent enlargeIntent = new Intent(this,EnlargeActivity.class);
+    public void enlarge(View v) {
+        Intent enlargeIntent = new Intent(this, EnlargeActivity.class);
         Bitmap image = list.get(index);
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -163,17 +163,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(enlargeIntent);
     }
 
-    public void filter(View v){
+    public void filter(View v) {
         Intent filterIntent = new Intent(this, FilterActivity.class);
         filterIntent.putExtra("DATA", files);
         startActivity(filterIntent);
     }
 
-    public void upload(View v){
+    public void upload(View v) {
         Toast.makeText(this, "Picture has been added to the upload queue", Toast.LENGTH_SHORT).show();
         try {
             wait(3000);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Toast.makeText(this, files.get(index).getName() + " has been uploaded", Toast.LENGTH_LONG).show();

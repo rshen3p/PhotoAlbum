@@ -30,9 +30,9 @@ public class FilterTextActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
-        files = (ArrayList<File>)getIntent().getSerializableExtra("DATA");
+        files = (ArrayList<File>) getIntent().getSerializableExtra("DATA");
 
-        for(int i = 0; i < files.size(); i++){
+        for (int i = 0; i < files.size(); i++) {
             name.add(files.get(i).getName());
         }
 
@@ -45,24 +45,24 @@ public class FilterTextActivity extends AppCompatActivity {
         });
     }
 
-    public void search(View v){
-        searchfield = (EditText)findViewById(R.id.searchfiled);
-        if(searchfield != null){
-            for(int i = 0; i < name.size(); i++){
-                if(name.get(i).contains(searchfield.getText())){
+    public void search(View v) {
+        searchfield = (EditText) findViewById(R.id.searchfiled);
+        if (searchfield != null) {
+            for (int i = 0; i < name.size(); i++) {
+                if (name.get(i).contains(searchfield.getText())) {
                     results.add(files.get(i));
                 }
             }
 
-            Intent in = new Intent(this,ResultActivity.class);
-            in.putExtra("pictures",results);
+            Intent in = new Intent(this, ResultActivity.class);
+            in.putExtra("pictures", results);
             startActivity(in);
         } else {
-            Toast.makeText(this,"Please enter search term",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter search term", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void home(View v){
+    public void home(View v) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

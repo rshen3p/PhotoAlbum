@@ -31,16 +31,16 @@ public class ResultActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        results = (ArrayList<File>)getIntent().getSerializableExtra("pictures");
+        results = (ArrayList<File>) getIntent().getSerializableExtra("pictures");
 
-        if(results != null && results.size() != 0) {
+        if (results != null && results.size() != 0) {
             path = results.get(0).getAbsolutePath();
             image = BitmapFactory.decodeFile(path);
 
             result = (ImageView) findViewById(R.id.resultView);
             result.setImageBitmap(image);
         } else {
-            Toast.makeText(this,"No picture can be found",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No picture can be found", Toast.LENGTH_SHORT).show();
         }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -51,34 +51,35 @@ public class ResultActivity extends AppCompatActivity {
         });
     }
 
-    public void home(View v){
+    //this is home method
+    public void home(View v) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void left(View v){
-        if(results != null && index > 0){
+    public void left(View v) {
+        if (results != null && index > 0) {
             index--;
             path = results.get(index).getAbsolutePath();
             image = BitmapFactory.decodeFile(path);
 
-            result = (ImageView)findViewById(R.id.resultView);
+            result = (ImageView) findViewById(R.id.resultView);
             result.setImageBitmap(image);
         } else {
-            Toast.makeText(this,"No more pictures anymore",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No more pictures anymore", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public void right(View v){
-        if(results != null && index < results.size() - 1){
+    public void right(View v) {
+        if (results != null && index < results.size() - 1) {
             index++;
             path = results.get(index).getAbsolutePath();
             image = BitmapFactory.decodeFile(path);
 
-            result = (ImageView)findViewById(R.id.resultView);
+            result = (ImageView) findViewById(R.id.resultView);
             result.setImageBitmap(image);
         } else {
-            Toast.makeText(this,"No more pictures",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No more pictures", Toast.LENGTH_SHORT).show();
         }
     }
 

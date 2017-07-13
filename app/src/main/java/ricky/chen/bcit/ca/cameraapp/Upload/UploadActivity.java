@@ -30,12 +30,12 @@ public class UploadActivity extends AppCompatActivity {
         });
     }
 
-    public void home(View v){
+    public void home(View v) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void save(View v){
+    public void save(View v) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

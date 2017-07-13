@@ -33,10 +33,10 @@ public class FilterLocationActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        files = (ArrayList<File>)getIntent().getSerializableExtra("DATA");
+        files = (ArrayList<File>) getIntent().getSerializableExtra("DATA");
 
-        if(files != null){
-            for(int i=0;i<files.size();i++){
+        if (files != null) {
+            for (int i = 0; i < files.size(); i++) {
                 path.add(files.get(i).getAbsolutePath());
             }
         }
@@ -50,34 +50,34 @@ public class FilterLocationActivity extends AppCompatActivity {
         });
     }
 
-    public void search(View v) throws IOException{
-        EditText lat = (EditText)findViewById(R.id.lat);
-        EditText lon = (EditText)findViewById(R.id.log);
+    public void search(View v) throws IOException {
+        EditText lat = (EditText) findViewById(R.id.lat);
+        EditText lon = (EditText) findViewById(R.id.log);
 
         String latFloat = lat.getText().toString();
         String lonFloat = lon.getText().toString();
 
-        if(lat != null && lon != null) {
+        if (lat != null && lon != null) {
             for (int i = 0; i < path.size(); i++) {
                 exif = new ExifInterface(files.get(i).getAbsolutePath());
                 hasLatLong = exif.getLatLong(latLong);
                 System.out.println(hasLatLong);
 
-                if(latFloat.equalsIgnoreCase(String.valueOf(latLong[0])) && lonFloat.equalsIgnoreCase(String.valueOf(latLong[1]))){
+                if (latFloat.equalsIgnoreCase(String.valueOf(latLong[0])) && lonFloat.equalsIgnoreCase(String.valueOf(latLong[1]))) {
                     System.out.println(files.get(i).getAbsolutePath());
                     results.add(files.get(i));
                 }
             }
         } else {
-            Toast.makeText(this,"Please enter valid longitude and latitude data",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter valid longitude and latitude data", Toast.LENGTH_SHORT).show();
         }
 
-        Intent in = new Intent(this,ResultActivity.class);
-        in.putExtra("pictures",results);
+        Intent in = new Intent(this, ResultActivity.class);
+        in.putExtra("pictures", results);
         startActivity(in);
     }
 
-    public void home(View v){
+    public void home(View v) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
